@@ -1,0 +1,116 @@
+.header {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/images/gori.jpg);
+  color: #ffffff;
+  height: 500px;
+  width: 1440px;
+}
+
+.header__name {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 26px;
+}
+
+.header__menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Oxygen";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.header__title {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 51px;
+}
+
+.header__description {
+  font-family: "Oxygen";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.63);
+}
+
+.header__button {
+  background: #dd783f;
+  height: 44px;
+  border-radius: 3px;
+  display: inline-block;
+  font-family: "Oxygen";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.themes {
+  height: 65px;
+}
+
+.themes__menu a {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #768088;
+  text-decoration: none;
+}
+
+.bigcards__title {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 2px;
+  color: #2E2E2E;
+}
+
+.bigcards__card {
+  width: 460px;
+  height: 280px;
+  background: url(/images/sky.png);
+  background-size: cover;
+  border-radius: 3px;
+}
+
+.bidcards__card__name {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+
+.bigcards__card__description {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.bigcards__card__author {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 35px;
+  color: rgba(255, 255, 255, 0.7);
+}
