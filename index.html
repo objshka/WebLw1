@@ -1,142 +1,144 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
     <title>Escape</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <div class="header">
-      <p class="header__name">Escape</p>
-      <nav class="header__menu">
-        <a href="home.html">HOME</a>
-        <a href="categories.html">CATEGOIES</a>
-        <a href="about.html">ABOUT</a>
-        <a href="contact.html">CONTACT</a>
-      </nav>
-      <h1 class="header__title">Let's do it together.</h1>
-      <p class="header__description">
-        We travel the world in search of stories. Come along for the ride.
-      </p>
-      <button class="header__button">View Latest Posts</button>
-    </div>
-    <div class="themes">
-      <nav class="themes__menu">
-        <a href="1.html">Nature</a>
-        <a href="2.html">Photography</a>
-        <a href="3.html">Relaxation</a>
-        <a href="4.html">Vacation</a>
-        <a href="5.html">Travel</a>
-        <a href="6.html">Adventure</a>
-      </nav>
-    </div>
-    <div class="bigcards">
-      <h2 class="bigcards__title">Featured Posts</h2>
-      <div class="bigcards__delimiter"></div>
-      <div class="bigcards__card">
-        <h2 class="bidcards__card__name">The Road Ahead</h2>
-        <p class="bigcards__card__description">The road ahead might be paved - it might not be.</p>
-        <p class="bigcards__card__author">
-          <img src="images/FaceMatVogels.jpg" alt="" style="border-radius: 60px;"/>Mat Vogels September 25,
-          2015
-        </p>
-      </div>
-      <div class="bigcards__card">
-        <div>
-          <p>Adventure</p>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header header-main_background">
+        <p class="logo header__logo header__logo_white">Escape.</p>
+        <nav>
+            <ul class="menu menu_pos">
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">HOME</a></li>
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">CATEGORIES</a>
+                </li>
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">ABOUT</a></li>
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">CONTACT</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__text">
+            <h1 class="header__text-h1 header__text-h1_white">Let's do it together</h1>
+            <p class="header__text-p header__text-p_white">We travel the world in search of stories. Come along for the
+                ride.</p>
+            <form action="index.html">
+                <button class="header__text-button">
+                    <span class="header__text-button-text">View Latest Posts</span>
+                </button>
+            </form>
         </div>
-        <h2>From Top Down</h2>
-        <p>Once a year, go someplace you’ve never been before.</p>
-        <p>
-          <img src="images/FaceWilliamWong.jpg" alt="" />William Wong September
-          25, 2015
-        </p>
-      </div>
-    </div>
-    <div>
-      <h2>Most Recent</h2>
-      <div></div>
-      <div>
-        <div>
-          <img src="images/Balls.jpg" alt="" />
-          <p>Still Standing Tall</p>
-          <p>Life begins at the end of your comfort zone.</p>
-          <div>
-            <p>
-              <img src="images/FaceWilliamWong.jpg" alt="" />William Wong
-              9/25/2015
-            </p>
-          </div>
+    </header>
+    <section>
+        <nav class="secmenu">
+            <ul>
+                <li class="secmenu__item"><a class="secmenu__item-link" href="index.html">Nature</a></li>
+                <li class="secmenu__item"><a class="secmenu__item-link" href="index.html">Photography</a></li>
+                <li class="secmenu__item"><a class="secmenu__item-link" href="index.html">Relaxation</a></li>
+                <li class="secmenu__item"><a class="secmenu__item-link" href="index.html">Vacation</a></li>
+                <li class="secmenu__item"><a class="secmenu__item-link" href="index.html">Travel</a></li>
+                <li class="secmenu__item"><a class="secmenu__item-link" href="index.html">Adventure</a></li>
+            </ul>
+        </nav>
+        <div class="content content_size-main">
+            <div>
+                <h2 class="content__h2">Featured Posts</h2>
+                <div class="content__delimiter"></div>
+                <div class="content__MainImg-left">
+                    <img class="content__image" src="img/MoonShine.png" alt="img">
+                    <p class="content__MainImg-header">The Road Ahead</p>s
+                    <p class="content__MainImg-disc">The road ahead might be pavel - it might not be.</p>
+                    <p class="content__MainImg-author"><img class="content__avatar content__avatar_pos"
+                            src="img/Euro.jpg" alt="img">Mat Vogels</p>
+                    <p class="content__MainImg-date">September 25, 2015</p>
+                </div>
+
+                <div class="content__MainImg-right">
+                    <button class="content__button"><span class="content__button-text">ADVENTURE</span></button>
+                    <img class="content__image" src="img/ChinaBalls.png" alt="img">
+                    <p class="content__MainImg-header">From Top Down</p>
+                    <p class="content__MainImg-disc">Once a year, go someplace you've never been before.</p>
+                    <p class="content__MainImg-author"><img class="content__avatar content__avatar_pos"
+                            src="img/Chinese.jpg" alt="img">William Wong</p>
+                    <p class="content__MainImg-date">September 25, 2015</p>
+                </div>
+            </div>
+            <div class="otherContent">
+                <h2 class="content__h2">Most Recent</h2>
+
+                <div class="contentBlock contentBlock__pos">
+                    <p><img src="img/BigBalls.jpg" alt="img"></p>
+                    <p class="contentBlock__header">Still Standing Tall</p>
+                    <p class="contentBlock__disc">Life begins at the end of your comfort zone.</p>
+                    <span class="contentBlock__author"><img class="content__avatar content__avatar_pos"
+                            src="img/Chinese.jpg" alt="img">William Wong</span>
+                    <span class="contentBlock__date">September 25, 2015</span>
+                </div>
+
+                <div class="contentBlock contentBlock__pos">
+                    <p><img src="img/Bridge.png" alt="img"></p>
+                    <p class="contentBlock__header">Sunny Side Up</p>
+                    <p class="contentBlock__disc">No place is ever as bad as they tell you it’s going to be.</p>
+                    <span class="contentBlock__author"><img class="content__avatar content__avatar_pos"
+                            src="img/Euro.jpg" alt="img">Mat Vogels</span>
+                    <span class="contentBlock__date">September 25, 2015</span>
+                </div>
+
+                <div class="contentBlock contentBlock__pos">
+                    <p><img src="img/SmokeWater.png" alt="img"></p>
+                    <p class="contentBlock__header">Water Falls</p>
+                    <p class="contentBlock__disc">We travel not to escape life, but for life not to escape us.</p>
+                    <span class="contentBlock__author"><img class="content__avatar content__avatar_pos"
+                            src="img/Euro.jpg" alt="img">Mat Vogels</span>
+                    <span class="contentBlock__date">September 25, 2015</span>
+                </div>
+
+                <div class="contentBlock contentBlock__pos">
+                    <p><img src="img/Sea.png" alt="img"></p>
+                    <p class="contentBlock__header">Through the Mist</p>
+                    <p class="contentBlock__disc">Travel makes you see what a tiny place you occupy in the world.</p>
+                    <img src="img/blockhhhh.png" alt="img">
+                    <span class="contentBlock__author"><img class="content__avatar content__avatar_pos"
+                            src="img/Chinese.jpg" alt="img">William Wong</span>
+                    <span class="contentBlock__date">September 25, 2015</span>
+                </div>
+
+                <div class="contentBlock contentBlock__pos">
+                    <p><img src="img/SmokeAir.png" alt="img"></p>
+                    <p class="contentBlock__header">Awaken Early</p>
+                    <p class="contentBlock__disc">Not all those who wander are lost.</p>
+                    <span class="contentBlock__author"><img class="content__avatar content__avatar_pos"
+                            src="img/Euro.jpg" alt="img">Mat Vogels</span>
+                    <span class="contentBlock__date">September 25, 2015</span>
+                </div>
+
+                <div class="contentBlock contentBlock__pos">
+                    <p><img src="img/WaterFall.png" alt="img"></p>
+                    <p class="contentBlock__header">Try it Always</p>
+                    <p class="contentBlock__disc">The world is a book, and those who do not travel read only one page.</p>
+                    <span class="contentBlock__author"><img class="content__avatar content__avatar_pos"
+                            src="img/Euro.jpg" alt="img">Mat Vogels</span>
+                    <span class="contentBlock__date">September 25, 2015</span>
+                </div>
+            </div>
         </div>
-        <div>
-          <img src="images/Bridge.png" alt="" />
-          <p>Sunny Side Up</p>
-          <p>No place is ever as bad as they tell you it’s going to be.</p>
-          <div>
-            <p>
-              <img src="images/FaceMatVogels.jpg" alt="" />Mat Vogels 9/25/2015
-            </p>
-          </div>
-        </div>
-        <div>
-          <img src="images/WaterFalls.png" alt="" />
-          <p>Water Falls</p>
-          <p>We travel not to escape life, but for life not to escape us.</p>
-          <div>
-            <p>
-              <img src="images/FaceMatVogels.jpg" alt="" />Mat Vogels 9/25/2015
-            </p>
-          </div>
-        </div>
-        <div>
-          <img src="images/ThroughTheMist.png" alt="" />
-          <p>Through the Mist</p>
-          <p>Travel makes you see what a tiny place you occupy in the world.</p>
-          <div>
-            <p>
-              <img src="images/FaceWilliamWong.jpg" alt="" />William Wong
-              9/25/2015
-            </p>
-          </div>
-        </div>
-        <div>
-          <img src="images/AwakenEarly.png" alt="" />
-          <p>Awaken Early</p>
-          <p>Not all those who wander are lost.</p>
-          <div>
-            <p>
-              <img src="images/FaceMatVogels.jpg" alt="" />Mat Vogels 9/25/2015
-            </p>
-          </div>
-        </div>
-        <div>
-          <img src="images/TryItAlways.png" alt="" />
-          <p>Try it Always</p>
-          <p>
-            The world is a book, and those who do not travel read only one page.
-          </p>
-          <div>
-            <p>
-              <img src="images/FaceMatVogels.jpg" alt="" />Mat Vogels 9/25/2015
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <p>Escape</p>
-      <nav>
-        <a href="home.html">HOME</a>
-        <a href="categories.html">CATEGOIES</a>
-        <a href="about.html">ABOUT</a>
-        <a href="contact.html">CONTACT</a>
-      </nav>
+
+    </section>
+    <footer class="footer">
+        <p class="logo footer__logo header__logo_white">Escape.</p>
+        <nav>
+            <ul class="menu menu_pos">
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">HOME</a></li>
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">CATEGORIES</a>
+                </li>
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">ABOUT</a></li>
+                <li class="menu__item"><a class="menu__item-link menu__item-link_white" href="index.html">CONTACT</a>
+                </li>
+            </ul>
+        </nav>
     </footer>
-  </body>
+</body>
+
 </html>

@@ -1,0 +1,24 @@
+.menu__item {
+    margin-right: 41px;
+    display: inline;
+}
+
+.menu__item-link {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu__item-link_white {
+    color: #FFFFFF;
+}
+
+.menu__item-link_black {
+    color: #000000;
+}

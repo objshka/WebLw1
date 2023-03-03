@@ -1,0 +1,24 @@
+.secmenu {
+    height: 65px;
+    width: 1440px;
+
+    background: #FFFFFF;
+    border-radius: 0px;
+}
+
+.secmenu__item {
+    margin-right: 41px;
+    display: inline;
+}
+
+.secmenu__item-link {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #768088;
+
+    text-decoration: none;
+}
