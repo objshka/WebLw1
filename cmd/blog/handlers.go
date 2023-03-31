@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/jmoiron/sqlx"
 	"html/template"
 	"log"
 	"net/http"
@@ -18,42 +19,60 @@ type postPage struct {
 }
 
 type featuredPostData struct {
-	Title       string
-	Subtitle    string
-	ImgModifier string
-	Author      string
-	AuthorImg   string
-	PublishDate string
+	Title       string `db:"title"`
+	Subtitle    string `db:"subtitle"`
+	ImgModifier string `db:"image_url"`
+	Author      string `db:"author"`
+	AuthorImg   string `db:"author_url"`
+	PublishDate string `db:"publish_date"`
 }
 
 type mostRecentData struct {
-	Title       string
-	Subtitle    string
-	ImgModifier string
-	Author      string
-	AuthorImg   string
-	PublishDate string
+	Title       string `db:"title"`
+	Subtitle    string `db:"subtitle"`
+	ImgModifier string `db:"image_url"`
+	Author      string `db:"author"`
+	AuthorImg   string `db:"author_url"`
+	PublishDate string `db:"publish_date"`
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
-	ts, err := template.ParseFiles("pages/index.html") // Главная страница блога
-	if err != nil {
-		http.Error(w, "Internal Server Error", 500) // В случае ошибки парсинга - возвращаем 500
-		log.Println(err.Error())                    // Используем стандартный логгер для вывода ошбики в консоль
-		return                                      // Не забываем завершить выполнение ф-ии
-	}
+func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		featuredPosts, err := featuredPosts(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
 
-	data := indexPage{
-		Title:         "Escape",
-		FeaturedPosts: featuredPosts(),
-		MostRecent:    mostRecent(),
-	}
+		mostPosts, err := mostRecent(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
 
-	err = ts.Execute(w, data) // Заставляем шаблонизатор вывести шаблон в тело ответа
-	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
+		ts, err := template.ParseFiles("pages/index.html")
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500) // В случае ошибки парсинга - возвращаем 500
+			log.Println(err)
+			return // Не забываем завершить выполнение ф-ии
+		}
+
+		data := indexPage{
+			Title:         "Escape",
+			FeaturedPosts: featuredPosts,
+			MostRecent:    mostPosts,
+		}
+
+		err = ts.Execute(w, data) // Заставляем шаблонизатор вывести шаблон в тело ответа
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
+		log.Println("Request completed successfully")
 	}
 }
 
@@ -78,76 +97,49 @@ func post(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func featuredPosts() []featuredPostData {
-	return []featuredPostData{
-		{
-			Title:       "The Road Ahead",
-			Subtitle:    "The road ahead might be paved - it might not be.",
-			ImgModifier: "featured-posts__post_the-road-ahead",
-			Author:      "Mat Vogels",
-			AuthorImg:   "mat-vogels-face",
-			PublishDate: "September 25, 2015",
-		},
-		{
-			Title:       "From Top Down",
-			Subtitle:    "Once a year, go someplace you've never been before.",
-			ImgModifier: "featured-posts__post_from-top-down",
-			Author:      "William Wong",
-			AuthorImg:   "william-wong-face",
-			PublishDate: "September 25, 2015",
-		},
+func featuredPosts(db *sqlx.DB) ([]featuredPostData, error) {
+	const query = `
+		SELECT
+			title,
+			subtitle,
+			author,
+			image_url,
+			author_url,
+			publish_date
+		FROM
+		    blog.post
+		WHERE featured = 1
+	`
+
+	var featurePosts []featuredPostData
+
+	err := db.Select(&featurePosts, query)
+	if err != nil {
+		return nil, err
 	}
+
+	return featurePosts, nil
 }
 
-func mostRecent() []mostRecentData {
-	return []mostRecentData{
-		{
-			ImgModifier: "most-recent-posts__post_still-standing-tall",
-			Title:       "Still Standing Tall",
-			Subtitle:    "Life begins at the end of your comfort zone.",
-			Author:      "William Wong",
-			AuthorImg:   "william-wong-face",
-			PublishDate: "9/25/2015",
-		},
-		{
-			ImgModifier: "most-recent-posts__post_sunny-side-up",
-			Title:       "Sunny Side Up",
-			Subtitle:    "No place is ever as bad as they tell you it's going to be.",
-			Author:      "Mat Vogels",
-			AuthorImg:   "mat-vogels-face",
-			PublishDate: "9/25/2015",
-		},
-		{
-			ImgModifier: "most-recent-posts__post_water-falls",
-			Title:       "Water Falls",
-			Subtitle:    "We travel not to escape life, but for life not to escape us.",
-			Author:      "Mat Vogels",
-			AuthorImg:   "mat-vogels-face",
-			PublishDate: "9/25/2015",
-		},
-		{
-			ImgModifier: "most-recent-posts__post_through-the-mist",
-			Title:       "Through the Mist",
-			Subtitle:    "Travel makes you see what a tiny place you occupy in the world.",
-			Author:      "William Wong",
-			AuthorImg:   "william-wong-face",
-			PublishDate: "9/25/2015",
-		},
-		{
-			ImgModifier: "most-recent-posts__post_awaken-early",
-			Title:       "Awaken Early",
-			Subtitle:    "Not all those who wander are lost.",
-			Author:      "Mat Vogels",
-			AuthorImg:   "mat-vogels-face",
-			PublishDate: "9/25/2015",
-		},
-		{
-			ImgModifier: "most-recent-posts__post_try-it-always",
-			Title:       "Try it Always",
-			Subtitle:    "The world is a book, and those who do not travel read only one page.",
-			Author:      "Mat Vogels",
-			AuthorImg:   "mat-vogels-face",
-			PublishDate: "9/25/2015",
-		},
+func mostRecent(db *sqlx.DB) ([]mostRecentData, error) {
+	const query = `
+		SELECT
+			title,
+			subtitle,
+			author,
+			image_url,
+			author_url,
+			publish_date
+		FROM
+		    blog.post
+		WHERE featured = 0
+	`
+	var mostPosts []mostRecentData
+
+	err := db.Select(&mostPosts, query)
+	if err != nil {
+		return nil, err
 	}
+
+	return mostPosts, nil
 }
