@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql" // Импортируем для возможности подключения к MySQL
+	"github.com/gorilla/mux"
 	"github.com/jmoiron/sqlx"
 	"log"
 	"net/http"
@@ -21,14 +22,14 @@ func main() {
 
 	dbx := sqlx.NewDb(db, dbDriverName)
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/home", index(dbx))
-	mux.HandleFunc("/post", post)
+	router := mux.NewRouter()
+	router.HandleFunc("/home", index(dbx))
+	router.HandleFunc("/post/{postID}", post(dbx))
 
-	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	log.Println("Start server " + port)
-	err = http.ListenAndServe(port, mux)
+	err = http.ListenAndServe(port, router)
 	if err != nil {
 		log.Fatal(err)
 	}
